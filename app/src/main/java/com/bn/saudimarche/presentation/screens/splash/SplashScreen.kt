@@ -1,6 +1,7 @@
 package com.bn.saudimarche.presentation.screens.splash
 
 import android.view.animation.OvershootInterpolator
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas

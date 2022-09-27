@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "430721898709",
+    "project_id": "elasalaty-41c7b",
+    "storage_bucket": "elasalaty-41c7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430721898709:android:13cc3d8ccf441ce7946a5c",
+        "android_client_info": {
+          "package_name": "com.bn.saudimarche"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430721898709-karo983mv49uvrbglginmcen58fii4n8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqxueVXRE8_gfEpiohY3WFiKYcjGwXr0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430721898709-karo983mv49uvrbglginmcen58fii4n8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

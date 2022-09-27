@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Saudi Marche</string>
+
+    <string name="time_out_error">ّInternet is too slow, try again later</string>
+    <string name="connection_error">Error in network connection</string>
+
+</resources>

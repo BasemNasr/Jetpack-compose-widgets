@@ -20,5 +20,8 @@
     <string name="forget_password">Forget Password</string>
     <string name="have_not_account">Have not account ?</string>
     <string name="regiser_new_account">Register New Account</string>
+    <string name="send_text">Send</string>
+    <string name="otp_hint">A message has been sent to your mobile number to activate the account</string>
+    <string name="activate_account">Activate Account</string>
 
 </resources>

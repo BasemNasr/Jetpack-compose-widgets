@@ -20,5 +20,8 @@
     <string name="forget_password">نسيت كلمة المرور</string>
     <string name="have_not_account">ليس لديك حساب ؟</string>
     <string name="regiser_new_account">تسجيل حساب جديد</string>
+    <string name="send_text">ارسال</string>
+    <string name="otp_hint">تم إرسال رسالة على رقم جوالك لتفعيل الحساب</string>
+    <string name="activate_account">تفعيل الحساب</string>
 
 </resources>

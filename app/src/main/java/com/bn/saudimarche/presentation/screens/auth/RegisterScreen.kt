@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.navArgument
 import com.bn.saudimarche.R
 import com.bn.saudimarche.presentation.navigation.AppScreens
 import com.bn.saudimarche.presentation.theme.BOLD_SILVER_BACKGROUND_COLOR
@@ -39,6 +40,7 @@ fun RegisterScreen(navController: NavController? = null) {
     var password by remember { mutableStateOf("") }
     var rePassword by remember { mutableStateOf("") }
 
+    var dummyPhone = "+55656565"
     val termsAndServiceCheckState = remember { mutableStateOf(false) }
 
 

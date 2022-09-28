@@ -50,7 +50,11 @@ fun SplashScreen(navController: NavController) {
                 })
         )
         delay(2000L)
-        navController.navigate(AppScreens.IntroScreen.name)
+        navController.navigate(AppScreens.IntroScreen.name) {
+            popUpTo(AppScreens.SplashScreen.name) {
+                inclusive = true
+            }
+        }
     })
     SplashAnimationWithContent()
 }

@@ -3,5 +3,22 @@
 
     <string name="time_out_error">ّInternet is too slow, try again later</string>
     <string name="connection_error">Error in network connection</string>
+    <string name="welcome">Welcome</string>
+    <string name="intro_register_hint">Register now and enjoy unique features and experience</string>
+    <string name="create_account">Create Account</string>
+    <string name="have_account_already">have account already?</string>
+    <string name="login">Login</string>
+    <string name="user_name">User Name</string>
+    <string name="register_hint">Please enter the following data to create a new account</string>
+    <string name="email_address">Email Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="confirm_terms_and_services">agree to the terms and conditions</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="login_hint">Please enter login data</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="have_not_account">Have not account ?</string>
+    <string name="regiser_new_account">Register New Account</string>
 
 </resources>

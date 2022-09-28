@@ -22,6 +22,7 @@ import androidx.core.view.WindowCompat
 import androidx.navigation.NavHostController
 import com.bn.saudimarche.data.SharedPrefManager
 import com.bn.saudimarche.presentation.navigation.AppNavigation
+import com.bn.saudimarche.presentation.navigation.AppScreens
 import com.bn.saudimarche.presentation.screens.splash.SplashScreen
 import com.bn.saudimarche.presentation.theme.SaudiMarcheTheme
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -43,11 +44,23 @@ class MainActivity : ComponentActivity() {
         }
         hideSystemUI()
     }
+
+
+    /*override fun onBackPressed() {
+        if (navController.currentBackStackEntry?.destination?.route
+            == AppScreens.HomeScreen.name
+        ) {
+            finish()
+        } else super.onBackPressed()
+    }*/
+
     private fun hideSystemUI() {
         //Hide the status bars
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            )
         } else {
             window.insetsController?.apply {
                 hide(WindowInsets.Type.statusBars())
@@ -74,7 +87,6 @@ fun SaudiMarcheApp(navController: NavHostController, mContext: Context) {
                 navController,
                 SharedPrefManager(mContext = mContext)
             )
-//            SplashScreen(navController = navController)
         }
     }
 }

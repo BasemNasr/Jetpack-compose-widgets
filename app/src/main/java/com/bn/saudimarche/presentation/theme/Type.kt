@@ -25,15 +25,15 @@ val somarRegular = FontFamily(
 
 val Typography = Typography(
     body1 = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = somarRegular,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+        fontSize = 20.sp
     ),
     h5 = TextStyle(
         color = Color.Black,
         fontFamily = somarBoldFont,
         fontWeight = FontWeight.ExtraBold,
-        fontSize = 32.sp
+        fontSize = 28.sp
     ),
     h4 = TextStyle(
         color = textColorBrown,

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Saudi Marche</string>
+
+    <string name="time_out_error">ّInternet is too slow, try again later</string>
+    <string name="connection_error">Error in network connection</string>
+    <string name="welcome">أهلا بك</string>
+    <string name="intro_register_hint">سجل الان و تمتع بمميزات و تجربة فريدة من نوعها</string>
+    <string name="create_account">انشاء حساب</string>
+    <string name="have_account_already">لديك حساب بالفعل ؟</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="user_name">User Name</string>
+    <string name="register_hint">من فضلك أدخل البيانات التالية لإنشاء حساب جديد</string>
+    <string name="email_address">البريد الالكتروني</string>
+    <string name="phone_number">رقم الجوال</string>
+    <string name="password">كلمة المرور</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="confirm_terms_and_services">أوافق على الشروط و الأحكام</string>
+    <string name="welcome_back">أهلا بك من جديد</string>
+    <string name="login_hint">من فضلك قم بتسجيل بياناتك لتسجيل الدخول</string>
+    <string name="forget_password">نسيت كلمة المرور</string>
+    <string name="have_not_account">ليس لديك حساب ؟</string>
+    <string name="regiser_new_account">تسجيل حساب جديد</string>
+
+</resources>

@@ -13,10 +13,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.outlined.Circle
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,6 +34,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -38,10 +44,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.PopupProperties
 import androidx.navigation.NavController
 import com.bn.saudimarche.R
-import com.bn.saudimarche.presentation.theme.TextColorSemiBlack
-import com.bn.saudimarche.presentation.theme.ToolBarColor
-import com.bn.saudimarche.presentation.theme.Typography
-import com.bn.saudimarche.presentation.theme.somarSemiBold
+import com.bn.saudimarche.presentation.theme.*
 import java.net.*
 
 @Composable
@@ -91,7 +94,7 @@ fun WidgetAppBar(
 @Composable
 fun AppButton(
     modifier: Modifier = Modifier,
-    text: String = "Prayer",
+    text: String = "Click Me",
     textColor: Color = Color.White,
     elevation: Dp = 6.dp,
     background: Color = Color.Black,
@@ -102,7 +105,7 @@ fun AppButton(
         onClick = { onButtonClicked.invoke() },
         modifier = modifier,
         elevation = ButtonDefaults.elevation(elevation),
-        shape = shape ?: RoundedCornerShape(8.dp),
+        shape = shape ?: RoundedCornerShape(80.dp),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = background,
             contentColor = textColor
@@ -112,15 +115,71 @@ fun AppButton(
             text = text,
             style = TextStyle(
                 color = textColor,
+                fontFamily = somarSemiBold,
                 textAlign = TextAlign.Center,
                 fontStyle = FontStyle.Normal,
                 fontWeight = FontWeight.Normal,
-                fontSize = 14.sp,
-                fontFamily = somarSemiBold
+                fontSize = 20.sp,
             )
         )
     }
 }
+
+@Composable
+fun AppTextField(
+    modifier: Modifier,
+    value: String,
+    hintLabel: String,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    keyboardOptions: KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+    onValueChanged: (text: String) -> Unit = {}
+) {
+    var enteredText by remember { mutableStateOf("") }
+    TextField(
+        value = enteredText,
+        keyboardOptions = keyboardOptions,
+        visualTransformation = visualTransformation,
+        onValueChange = {
+            enteredText = it
+            onValueChanged.invoke(it)
+        },
+        label = { Text(hintLabel) },
+        maxLines = 1,
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = Color.White
+        ),
+        textStyle = TextStyle(
+            color = textColorBrown,
+            fontWeight = FontWeight.Bold,
+            fontFamily = somarRegular,
+            fontSize = 16.sp
+        ),
+        modifier = modifier
+    )
+}
+
+@Composable
+fun CircleCheckbox(selected: Boolean, enabled: Boolean = true, onChecked: () -> Unit) {
+
+    val imageVector = if (selected) Icons.Filled.CheckCircle else Icons.Outlined.Circle
+    val tint =
+        if (selected) textColorBrown.copy(alpha = 0.8f) else textColorBrown.copy(alpha = 0.8f)
+    val background = if (selected) Color.White else Color.Transparent
+
+    IconButton(
+        onClick = { onChecked() },
+        modifier = Modifier.offset(x = 4.dp, y = 4.dp),
+        enabled = enabled
+    ) {
+
+        Icon(
+            imageVector = imageVector, tint = tint,
+            modifier = Modifier.background(background, shape = CircleShape),
+            contentDescription = "checkbox"
+        )
+    }
+}
+
 
 @Composable
 fun TextWithBox(

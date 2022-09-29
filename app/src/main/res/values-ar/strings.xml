@@ -23,5 +23,9 @@
     <string name="send_text">ارسال</string>
     <string name="otp_hint">تم إرسال رسالة على رقم جوالك لتفعيل الحساب</string>
     <string name="activate_account">تفعيل الحساب</string>
-
+    <string name="explore">إكتشف</string>
+    <string name="offers">العروض</string>
+    <string name="cart">السلة</string>
+    <string name="my_account">حسابي</string>
+    <string name="notifications">Notifications</string>
 </resources>

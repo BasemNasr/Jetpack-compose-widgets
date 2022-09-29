@@ -27,7 +27,7 @@ fun AppNavigation(
     //SplashScreen
     AnimatedNavHost(
         navController = navController,
-        startDestination = AppScreens.SplashScreen.name
+        startDestination = AppScreens.HomeScreen.name
     ) {
         //SplashScreen
         composable(
@@ -35,7 +35,7 @@ fun AppNavigation(
             enterTransition = { _, _ -> slideInHorizontally(animationSpec = tween(500)) },
             exitTransition = { _, _ -> slideOutHorizontally(animationSpec = tween(500)) },
         ) {
-            SplashScreen(navController)
+            MainScreen(navController)
         }
         //Intro Screen
         composable(

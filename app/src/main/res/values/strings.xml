@@ -23,5 +23,10 @@
     <string name="send_text">Send</string>
     <string name="otp_hint">A message has been sent to your mobile number to activate the account</string>
     <string name="activate_account">Activate Account</string>
+    <string name="explore">Explore</string>
+    <string name="offers">Offers</string>
+    <string name="cart">Cart</string>
+    <string name="my_account">My account</string>
+    <string name="notifications">Notifications</string>
 
 </resources>

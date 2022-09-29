@@ -23,12 +23,10 @@ import androidx.compose.material.icons.outlined.Circle
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.DefaultAlpha
-import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -45,7 +43,11 @@ import androidx.compose.ui.window.PopupProperties
 import androidx.navigation.NavController
 import com.bn.saudimarche.R
 import com.bn.saudimarche.presentation.theme.*
+import com.google.accompanist.pager.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.yield
 import java.net.*
+import kotlin.math.absoluteValue
 
 @Composable
 fun WidgetAppBar(
@@ -196,6 +198,39 @@ fun TextWithBox(
             modifier = Modifier.padding(4.dp),
             text = text,
             style = Typography.h2,
+        )
+    }
+}
+@Composable
+fun CounterCircle(
+    backgroundColor: Color = RED_COLOR,
+    text: String = "",
+    textStyle: TextStyle = TextStyle(color = Color.White, fontSize = 9.sp)
+) {
+    Box(
+        modifier = Modifier
+            .background(
+                color = backgroundColor,
+                shape = CircleShape,
+            )
+            .layout(){ measurable, constraints ->
+                // Measure the composable
+                val placeable = measurable.measure(constraints)
+
+                //get the current max dimension to assign width=height
+                val currentHeight = placeable.height
+                val currentWidth = placeable.width
+                val newDiameter = maxOf(currentHeight, currentWidth)
+
+                //assign the dimension and the center position
+                layout(newDiameter, newDiameter) {
+                    // Where the composable gets placed
+                    placeable.placeRelative((newDiameter-currentWidth)/2, (newDiameter-currentHeight)/2)
+                }
+            }) {
+        Text(
+            text = text,
+            style = textStyle
         )
     }
 }
@@ -393,5 +428,205 @@ fun CircularImage(
         }
     }
 
+
+    @ExperimentalPagerApi
+    @Composable
+    fun AutoSlidingWithIndicator() {
+        val pagerState = rememberPagerState(
+            pageCount = 10,
+            initialOffscreenLimit = 2
+        )
+
+        LaunchedEffect(Unit) {
+            while (true) {
+                yield()
+                delay(2000)
+                pagerState.animateScrollToPage(
+                    page = (pagerState.currentPage + 1) % (pagerState.pageCount),
+                    animationSpec = tween(600)
+                )
+            }
+        }
+
+        Column(
+            modifier = Modifier.fillMaxSize().background(Color.Gray)
+        ) {
+            Column(
+                modifier = Modifier
+                    .height(50.dp)
+                    .fillMaxWidth()
+                    .background(Purple500),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Auto Sliding",
+                    color = Color.White,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            HorizontalPager(
+                state = pagerState,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(0.dp, 40.dp, 0.dp, 40.dp)
+            ) { page ->
+                Card(
+                    modifier = Modifier
+                        .graphicsLayer {
+                            val pageOffset = calculateCurrentOffsetForPage(page).absoluteValue
+                            androidx.compose.ui.util.lerp(
+                                start = 0.85f,
+                                stop = 1f,
+                                fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                            ).also { scale ->
+                                scaleX = scale
+                                scaleY = scale
+                            }
+                        }
+                        .fillMaxWidth()
+                        .padding(15.dp, 0.dp, 15.dp, 0.dp),
+                    shape = RoundedCornerShape(20.dp)
+                ) {
+//                val natural = natural[page]
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.LightGray)
+                            .align(Alignment.Center)
+                    ) {
+                        Image(
+                            painter = painterResource(
+                                id = when (page) {
+                                    1 -> R.drawable.splash_icon
+                                    2 -> R.drawable.splash_icon
+                                    3 -> R.drawable.splash_icon
+                                    4 -> R.drawable.splash_icon
+                                    5 -> R.drawable.splash_icon
+                                    else -> R.drawable.splash_icon
+                                }
+                            ),
+                            contentDescription = "Image",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    }
+                }
+            }
+
+            //Horizontal dot indicator
+            HorizontalPagerIndicator(
+                pagerState = pagerState,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(16.dp)
+
+            )
+        }
+    }
+
+    @ExperimentalPagerApi
+    @Composable
+    fun AutoSlidingImages() {
+        val pagerState = rememberPagerState(
+            pageCount = 10,
+            initialOffscreenLimit = 2
+        )
+
+        LaunchedEffect(Unit) {
+            while (true) {
+                yield()
+                delay(2000)
+                pagerState.animateScrollToPage(
+                    page = (pagerState.currentPage + 1) % (pagerState.pageCount),
+                    animationSpec = tween(600)
+                )
+            }
+        }
+
+        Column(
+            modifier = Modifier.fillMaxSize().background(Color.Gray)
+        ) {
+            Column(
+                modifier = Modifier
+                    .height(50.dp)
+                    .fillMaxWidth()
+                    .background(Purple500),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Auto Sliding",
+                    color = Color.White,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            HorizontalPager(
+                state = pagerState,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(0.dp, 40.dp, 0.dp, 40.dp)
+            ) { page ->
+                Card(
+                    modifier = Modifier
+                        .graphicsLayer {
+                            val pageOffset = calculateCurrentOffsetForPage(page).absoluteValue
+                            androidx.compose.ui.util.lerp(
+                                start = 0.85f,
+                                stop = 1f,
+                                fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                            ).also { scale ->
+                                scaleX = scale
+                                scaleY = scale
+                            }
+                        }
+                        .fillMaxWidth()
+                        .padding(15.dp, 0.dp, 15.dp, 0.dp),
+                    shape = RoundedCornerShape(20.dp)
+                ) {
+//                val natural = natural[page]
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.LightGray)
+                            .align(Alignment.Center)
+                    ) {
+                        Image(
+                            painter = painterResource(
+                                id = when (page) {
+                                    1 -> R.drawable.splash_icon
+                                    2 -> R.drawable.splash_icon
+                                    3 -> R.drawable.splash_icon
+                                    4 -> R.drawable.splash_icon
+                                    5 -> R.drawable.splash_icon
+                                    else -> R.drawable.splash_icon
+                                }
+                            ),
+                            contentDescription = "Image",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    }
+                }
+            }
+
+            //Horizontal dot indicator
+            HorizontalPagerIndicator(
+                pagerState = pagerState,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(16.dp)
+
+            )
+        }
+    }
 
 }

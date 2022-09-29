@@ -37,7 +37,7 @@ val Typography = Typography(
     ),
     h4 = TextStyle(
         color = textColorBrown,
-        fontFamily = somarSemiBold,
+        fontFamily = somarBoldFont,
         fontWeight = FontWeight.Bold,
         fontSize = 20.sp,
         textAlign = TextAlign.Center

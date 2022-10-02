@@ -2,8 +2,6 @@ package com.bn.saudimarche.presentation.screens.main.mainScreens
 
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyRow
@@ -51,101 +49,126 @@ import kotlin.math.absoluteValue
 @Composable
 @Preview
 fun ExploreScreen(navController: NavController? = null) {
-    Surface(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Column(
-            modifier = Modifier
-                .background(color = BACKGROUND_COLOR)
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .verticalScroll(rememberScrollState()).fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
-        ) {
-            val textState = remember { mutableStateOf(TextFieldValue("")) }
-            homeTopBar()
-            SearchView(textState)
-            AutoSliding()
-            CategoriesList(
-                firstList =
-                listOf(
-                    CategoryModel(
-                        4,
-                        "Electronics",
-                        "https://i.ibb.co/gDMx2Qw/Consumer-Electronics.jpg"
-                    )
-                ),
-                secondList =
-                listOf(
-                    CategoryModel(1, "Cafe", "https://i.ibb.co/dGWdf0w/cafe.jpg"),
-                    CategoryModel(2, "Cars", "https://i.ibb.co/r0BSX4p/cars.jpg"),
-                    CategoryModel(3, "Clothes", "https://i.ibb.co/1Rnm0Yc/clothes.jpg"),
-                    CategoryModel(5, "Resturants", "https://i.ibb.co/QN6ZDV2/resturants.jpg"),
-                    CategoryModel(6, "Shoes", "https://i.ibb.co/kB5fFr1/shoses.jpg"),
+
+    Scaffold(topBar = { },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+
+                },
+                backgroundColor = textColorBrown,
+                contentColor = Purple700
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.gift),
+                     "Prizes"
                 )
-            )
-            latestTitle()
-            var latestAdditions = listOf(
-                ProductModel(
-                    1,
-                    "Product 1",
-                    "https://i.ibb.co/r0BSX4p/cars.jpg",
-                    "500",
-                    "700",
-                    "Car Care",
-                    false
-                ),
-                ProductModel(
-                    2,
-                    "Product 2",
-                    "https://i.ibb.co/r0BSX4p/cars.jpg",
-                    "300",
-                    "400",
-                    "Car Care",
-                    false
-                ),
-                ProductModel(
-                    3,
-                    "Product 3",
-                    "https://i.ibb.co/r0BSX4p/cars.jpg",
-                    "500",
-                    "800",
-                    "Car Care",
-                    false
-                ),
-                ProductModel(
-                    4,
-                    "Product 4",
-                    "https://i.ibb.co/r0BSX4p/cars.jpg",
-                    "100",
-                    "200",
-                    "Car Care",
-                    false
-                ),
-                ProductModel(
-                    5,
-                    "Product 5",
-                    "https://i.ibb.co/r0BSX4p/cars.jpg",
-                    "99",
-                    "150",
-                    "Car Care",
-                    false
-                ),
-                ProductModel(
-                    6,
-                    "Product 6",
-                    "https://i.ibb.co/r0BSX4p/cars.jpg",
-                    "700",
-                    "900",
-                    "Car Care",
-                    false
-                )
-            )
-            latestAdditionContent(latestAdditions)
+
+            }
         }
+    ) { contentPadding ->
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(contentPadding)
+        ) {
+            Column(
+                modifier = Modifier
+                    .background(color = BACKGROUND_COLOR)
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+                    .verticalScroll(rememberScrollState())
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Top
+            ) {
+                val textState = remember { mutableStateOf(TextFieldValue("")) }
+                homeTopBar()
+                SearchView(textState)
+                AutoSliding()
+                CategoriesList(
+                    firstList =
+                    listOf(
+                        CategoryModel(
+                            4,
+                            "Electronics",
+                            "https://i.ibb.co/gDMx2Qw/Consumer-Electronics.jpg"
+                        )
+                    ),
+                    secondList =
+                    listOf(
+                        CategoryModel(1, "Cafe", "https://i.ibb.co/dGWdf0w/cafe.jpg"),
+                        CategoryModel(2, "Cars", "https://i.ibb.co/r0BSX4p/cars.jpg"),
+                        CategoryModel(3, "Clothes", "https://i.ibb.co/1Rnm0Yc/clothes.jpg"),
+                        CategoryModel(5, "Resturants", "https://i.ibb.co/QN6ZDV2/resturants.jpg"),
+                        CategoryModel(6, "Shoes", "https://i.ibb.co/kB5fFr1/shoses.jpg"),
+                    )
+                )
+                latestTitle()
+                var latestAdditions = listOf(
+                    ProductModel(
+                        1,
+                        "Product 1",
+                        "https://i.ibb.co/r0BSX4p/cars.jpg",
+                        "500",
+                        "700",
+                        "Car Care",
+                        false
+                    ),
+                    ProductModel(
+                        2,
+                        "Product 2",
+                        "https://i.ibb.co/r0BSX4p/cars.jpg",
+                        "300",
+                        "400",
+                        "Car Care",
+                        false
+                    ),
+                    ProductModel(
+                        3,
+                        "Product 3",
+                        "https://i.ibb.co/r0BSX4p/cars.jpg",
+                        "500",
+                        "800",
+                        "Car Care",
+                        false
+                    ),
+                    ProductModel(
+                        4,
+                        "Product 4",
+                        "https://i.ibb.co/r0BSX4p/cars.jpg",
+                        "100",
+                        "200",
+                        "Car Care",
+                        false
+                    ),
+                    ProductModel(
+                        5,
+                        "Product 5",
+                        "https://i.ibb.co/r0BSX4p/cars.jpg",
+                        "99",
+                        "150",
+                        "Car Care",
+                        false
+                    ),
+                    ProductModel(
+                        6,
+                        "Product 6",
+                        "https://i.ibb.co/r0BSX4p/cars.jpg",
+                        "700",
+                        "900",
+                        "Car Care",
+                        false
+                    )
+                )
+                latestAdditionContent(latestAdditions)
+
+            }
+        }
+
     }
+
+
 }
 
 
@@ -265,9 +288,11 @@ private fun latestAdditionContent(list: List<ProductModel>? = null) {
 
                         val likeState = remember { mutableStateOf(list[index].isLike) }
 
-                        Row(modifier = Modifier
-                            .wrapContentWidth()
-                            .padding(start = 0.dp)) {
+                        Row(
+                            modifier = Modifier
+                                .wrapContentWidth()
+                                .padding(start = 0.dp)
+                        ) {
                             Text(
                                 text = "${product.price} ${stringResource(id = R.string.currency_)}",
                                 style = Typography.body2,

@@ -12,6 +12,7 @@ import com.bn.saudimarche.presentation.screens.auth.OtpScreen
 import com.bn.saudimarche.presentation.screens.auth.RegisterScreen
 import com.bn.saudimarche.presentation.screens.intro.IntroScreen
 import com.bn.saudimarche.presentation.screens.main.MainScreen
+import com.bn.saudimarche.presentation.screens.splash.SplashScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 
@@ -25,7 +26,7 @@ fun AppNavigation(
     //SplashScreen
     AnimatedNavHost(
         navController = navController,
-        startDestination = AppScreens.HomeScreen.name
+        startDestination = AppScreens.SplashScreen.name
     ) {
         //SplashScreen
         composable(
@@ -43,7 +44,7 @@ fun AppNavigation(
                 )
             }
         ) {
-            MainScreen(navController)
+            SplashScreen(navController)
         }
         //Intro Screen
         composable(

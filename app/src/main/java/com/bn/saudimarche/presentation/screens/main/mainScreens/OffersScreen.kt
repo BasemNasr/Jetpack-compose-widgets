@@ -15,7 +15,7 @@ import androidx.navigation.NavController
 import com.bn.saudimarche.R
 
 @Composable
-fun OffersScreen(navController: NavController) {
+fun OffersScreen(navController: NavController?=null) {
     Surface(
         modifier = Modifier
             .fillMaxSize()

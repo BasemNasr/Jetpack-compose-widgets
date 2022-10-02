@@ -23,6 +23,7 @@ import androidx.navigation.NavHostController
 import com.bn.saudimarche.data.SharedPrefManager
 import com.bn.saudimarche.presentation.navigation.AppNavigation
 import com.bn.saudimarche.presentation.navigation.AppScreens
+import com.bn.saudimarche.presentation.screens.main.MainScreen
 import com.bn.saudimarche.presentation.screens.splash.SplashScreen
 import com.bn.saudimarche.presentation.theme.SaudiMarcheTheme
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -42,7 +43,6 @@ class MainActivity : ComponentActivity() {
                 SaudiMarcheApp(navController, this@MainActivity)
             }
         }
-        hideSystemUI()
     }
 
 
@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
         } else super.onBackPressed()
     }*/
 
-    private fun hideSystemUI() {
+   /* private fun hideSystemUI() {
         //Hide the status bars
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             window.setFlags(
@@ -67,7 +67,7 @@ class MainActivity : ComponentActivity() {
                 systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             }
         }
-    }
+    }*/
 }
 
 @ExperimentalComposeUiApi

@@ -433,8 +433,7 @@ fun CircularImage(
     @Composable
     fun AutoSlidingWithIndicator() {
         val pagerState = rememberPagerState(
-            pageCount = 10,
-            initialOffscreenLimit = 2
+            initialPage = 2
         )
 
         LaunchedEffect(Unit) {
@@ -473,7 +472,8 @@ fun CircularImage(
                 state = pagerState,
                 modifier = Modifier
                     .weight(1f)
-                    .padding(0.dp, 40.dp, 0.dp, 40.dp)
+                    .padding(0.dp, 40.dp, 0.dp, 40.dp),
+                count = 10
             ) { page ->
                 Card(
                     modifier = Modifier
@@ -497,7 +497,7 @@ fun CircularImage(
                         modifier = Modifier
                             .fillMaxSize()
                             .background(Color.LightGray)
-                            .align(Alignment.Center)
+                            .align(Alignment.CenterHorizontally)
                     ) {
                         Image(
                             painter = painterResource(
@@ -529,12 +529,13 @@ fun CircularImage(
         }
     }
 
+
+
     @ExperimentalPagerApi
     @Composable
     fun AutoSlidingImages() {
         val pagerState = rememberPagerState(
-            pageCount = 10,
-            initialOffscreenLimit = 2
+          initialPage = 2
         )
 
         LaunchedEffect(Unit) {
@@ -573,7 +574,8 @@ fun CircularImage(
                 state = pagerState,
                 modifier = Modifier
                     .weight(1f)
-                    .padding(0.dp, 40.dp, 0.dp, 40.dp)
+                    .padding(0.dp, 40.dp, 0.dp, 40.dp),
+                count = 10
             ) { page ->
                 Card(
                     modifier = Modifier
@@ -592,12 +594,11 @@ fun CircularImage(
                         .padding(15.dp, 0.dp, 15.dp, 0.dp),
                     shape = RoundedCornerShape(20.dp)
                 ) {
-//                val natural = natural[page]
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
                             .background(Color.LightGray)
-                            .align(Alignment.Center)
+                            .align(Alignment.CenterHorizontally)
                     ) {
                         Image(
                             painter = painterResource(

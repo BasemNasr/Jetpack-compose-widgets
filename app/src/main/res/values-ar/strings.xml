@@ -28,4 +28,7 @@
     <string name="cart">السلة</string>
     <string name="my_account">حسابي</string>
     <string name="notifications">Notifications</string>
+    <string name="newest_added">أحدث الإضافات</string>
+    <string name="show_all">عرض الكل</string>
+    <string name="currency_">ر.س</string>
 </resources>

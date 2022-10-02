@@ -28,5 +28,8 @@
     <string name="cart">Cart</string>
     <string name="my_account">My account</string>
     <string name="notifications">Notifications</string>
+    <string name="newest_added">Latest additions</string>
+    <string name="show_all">Show all</string>
+    <string name="currency_">SAR</string>
 
 </resources>

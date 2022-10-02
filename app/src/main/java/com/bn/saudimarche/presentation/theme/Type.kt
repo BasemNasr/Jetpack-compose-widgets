@@ -27,17 +27,22 @@ val Typography = Typography(
     body1 = TextStyle(
         fontFamily = somarRegular,
         fontWeight = FontWeight.Normal,
-        fontSize = 20.sp
+        fontSize = 20.sp,
+    ),
+    body2 = TextStyle(
+        fontFamily = somarRegular,
+        fontWeight = FontWeight.Normal,
+        fontSize = 20.sp,
     ),
     h5 = TextStyle(
         color = Color.Black,
         fontFamily = somarBoldFont,
         fontWeight = FontWeight.ExtraBold,
-        fontSize = 28.sp
+        fontSize = 24.sp,
     ),
     h4 = TextStyle(
         color = textColorBrown,
-        fontFamily = somarBoldFont,
+        fontFamily = somarSemiBold,
         fontWeight = FontWeight.Bold,
         fontSize = 20.sp,
         textAlign = TextAlign.Center

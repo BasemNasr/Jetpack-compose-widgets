@@ -12,4 +12,6 @@ data class ProductModel(
     val price_before_discount: String? = null,
     val owner_name: String? = null,
     var isLike: Boolean? = false,
+    var badge: String? = "",
+    var quantity: Int? = 1,
 ) : Parcelable

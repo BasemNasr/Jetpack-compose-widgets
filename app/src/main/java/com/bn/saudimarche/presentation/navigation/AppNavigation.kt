@@ -44,7 +44,7 @@ fun AppNavigation(
                 )
             }
         ) {
-            SplashScreen(navController)
+            MainScreen(navController)
         }
         //Intro Screen
         composable(

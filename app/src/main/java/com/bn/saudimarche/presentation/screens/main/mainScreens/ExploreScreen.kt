@@ -36,6 +36,7 @@ import com.bn.saudimarche.data.model.categories.CategoryModel
 import com.bn.saudimarche.data.model.product.ProductModel
 import com.bn.saudimarche.presentation.theme.*
 import com.bn.saudimarche.presentation.widgets.CounterCircle
+import com.bn.saudimarche.presentation.widgets.TextWithBox
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.calculateCurrentOffsetForPage
@@ -113,7 +114,7 @@ fun ExploreScreen(navController: NavController? = null) {
                         "500",
                         "700",
                         "Car Care",
-                        false
+                        false,
                     ),
                     ProductModel(
                         2,
@@ -225,10 +226,9 @@ private fun latestTitle() {
 
 
 @Composable
-@Preview("latestAdditionContent")
-private fun latestAdditionContent(list: List<ProductModel>? = null) {
+fun latestAdditionContent(list: List<ProductModel>? = null,modifier: Modifier=Modifier.height(400.dp)) {
     LazyVerticalGrid(
-        modifier = Modifier.height(400.dp),
+        modifier = modifier,
         columns = GridCells.Adaptive(168.dp),
         // content padding
         contentPadding = PaddingValues(
@@ -244,10 +244,9 @@ private fun latestAdditionContent(list: List<ProductModel>? = null) {
                     Card(
                         backgroundColor = Color.Transparent,
                         modifier = Modifier
-                            .padding(4.dp)
-                            .fillMaxWidth(),
+                            .padding(4.dp),
                         elevation = 0.dp,
-                        shape = RoundedCornerShape(15.dp)
+                        shape = RoundedCornerShape(15.dp),
                     ) {
                         Image(
                             painter = rememberImagePainter(data = "${product.image}"),
@@ -257,13 +256,29 @@ private fun latestAdditionContent(list: List<ProductModel>? = null) {
                                 .width(170.dp),
                             contentScale = ContentScale.FillBounds
                         )
+                        if(product.badge!!.isNotEmpty()){
+                            Box(
+                                modifier = Modifier
+                                    .wrapContentWidth()
+                                    .background(textColorBrown, shape = RoundedCornerShape(topEnd = 10.dp, bottomEnd = 10.dp)),
+                            ) {
+                                Text(
+                                    modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp)
+                                        .wrapContentWidth(),
+                                    maxLines = 1,
+                                    text = "${product.badge}",
+                                    style = Typography.h2,
+                                    color = Color.White,
+                                )
+                            }
+                        }
                     }
                     Text(
                         text = "${product.name}",
                         fontSize = 24.sp,
                         color = textColorBrown,
                         textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(start = 8.dp, top = 8.dp),
+                        modifier = Modifier.padding(start = 8.dp, top = 0.dp),
                         fontFamily = somarSemiBold,
                         maxLines = 1
                     )
@@ -281,7 +296,7 @@ private fun latestAdditionContent(list: List<ProductModel>? = null) {
                         modifier = Modifier
                             .wrapContentHeight()
                             .fillMaxWidth()
-                            .padding(start = 10.dp, end = 10.dp, top = 0.dp),
+                            .padding(start = 10.dp, end = 10.dp, top = 0.dp, bottom = 10.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
